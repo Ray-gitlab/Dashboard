@@ -96,6 +96,7 @@ iii.	1.2分頁下拉菜單內容改變,增加CAT WIFI，合併S-OTACM&RM為SOTA 
  
 1. UI頁面說明
 1.1 總覽  
+![Alt text](https://github.com/Ray-gitlab/Dashboard/blob/main/img/overview.png)
 1.	總覽頁面每30秒更換線體(圖例1.1 line_no),鼠標停留在圖例1/2/3不切換,鼠標離開后重新計時
 2.	具備手動翻頁功能（圖例1.1切換）
 3.	圖例1中4個顏色狀態為設備信息,Offline灰色,服務器計算結果或增加心跳檢測,30秒未收到默認為模組Offline，另station_status = "stationdown"為紅色, "alarm"為黃色,都不等則為綠色,顏色優先級紅色>黃色>綠色
