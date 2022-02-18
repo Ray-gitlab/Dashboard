@@ -1,17 +1,8 @@
-
-
-
-
-
-
-
 電子看板項目說明
-
-
 
 Dept: Watch NPI SI
 Date: 2011/12/10
- 
+
 目錄
 Change List	4
 1. UI頁面說明	6
@@ -49,7 +40,7 @@ iv.	2.2數據格式，設備數據根據station_status狀態變化記錄停線�
 i.	1.1總覽，總覽頁刪除Idle狀態,修改標題Testing Automation Dashboard,修改紅色提示標籤為stationDown
 ii.	2.3上傳內容，修改數據上傳方式,product_status和station_status用兩個接口分別傳送數據
 6.	2021/11/19
-i.	2.2數據格式，數據上傳關鍵字改為小寫并需要轉義 "
+i.	2.2數據格式，數據上傳關鍵字改為小寫并需要轉義 ""
 ii.	1.1總覽，新增7.計算細節說明,說明總覽頁數據計算邏輯
 7.	2021/11/20
 i.	1.1總覽，總覽頁圖例2與3數據量小於10時不顯示,數據同時顯示數據和百分比
@@ -60,7 +51,7 @@ v.	2.2數據格式，數據上傳修改station_status狀態Downtime為stationdow
 8.	2021/11/25 
 i.	2.2數據格式，數據上傳中純數字參數的內容不需要增加引號,關聯參數station_module, station_num, station_no,ct
 9.	2021/11/26
-i.	2.2數據格式，數據上傳增加字段，模組總數moudule_num 
+i.	2.2數據格式，數據上傳增加字段，模組總數moudule_num
 
 10.	2021/11/29
 i.	2.2數據格式，刪除product_status=timeout，僅留下Pass&Fail，修改sn參數空值為NOSN,修改Page.5中yield和toss計算公式
@@ -97,107 +88,108 @@ iii.	1.2分頁下拉菜單內容改變,增加CAT WIFI，合併S-OTACM&RM為SOTA 
 
 ![Alt text](https://github.com/Ray-gitlab/Dashboard/blob/main/img/overview.png)
 
-1.	總覽頁面每30秒更換線體(圖例1.1 line_no),鼠標停留在圖例1/2/3不切換,鼠標離開后重新計時
-2.	具備手動翻頁功能（圖例1.1切換）
-3.	圖例1中4個顏色狀態為設備信息,Offline灰色,服務器計算結果或增加心跳檢測,30秒未收到默認為模組Offline，另station_status = "stationdown"為紅色, "alarm"為黃色,都不等則為綠色,顏色優先級紅色>黃色>綠色
-4.	圖例2為治具拋料TOP項,顯示1小時內拋料的最高TOP 10, 數據量小於10時不參與排行
-5.	圖例3為良率倒數TOP項,顯示1小時內良率最低TOP 10,數據量小於10時不參與排行
-6.	計算細節說明
-i.	圖例1顯示同一個line_no下的線體，圖例1.1即為line_no，line_no值前端代碼更新為固定值，2022/06之前保留M03-3FA-03、M03-3FT-03，2022/06之後根據IE線體修改為4條
-ii.	圖例1.2圖形數量以module_num數值確定，圖形需篩選line_no, station_type, station_module并且以station_status的狀態來顯示顏色，分子分母數據為count(station_status = Running&Idle) / station_num,示例7/8
-iii.	圖例2縱座標單位為堆疊圖數值與線條百分比,堆疊圖採用兩種顏色且顯示數值,附加折線圖顯示拋料百分比并顯示百分比,排序使用降序篩選前10，計算公式採用COUNT(sn = "NOSN")的總數除以COUNT(*),即產品無sn總數除以全部有記錄的總數
-iv.	圖例3縱座標單位為柱狀圖數值與線條百分比, 柱狀圖採用綠色且顯示數值,附件折線圖顯示良率百分比并顯示百分比，排序使用升序篩選前10, 計算公式採用product_status = "Pass"的總數除以sn != "NOSN"的總數,即產品Pass總數除以測試的總數.
-v.	圖例2與3橫座標顯示為station_type+"-"+station_module+"-"+station_no+"#"
+    1.1.1.	總覽頁面每30秒更換線體(圖例1.1 line_no),鼠標停留在圖例1/2/3不切換,鼠標離開后重新計時
+    1.1.2.	具備手動翻頁功能（圖例1.1切換）
+    1.1.3.	圖例1中4個顏色狀態為設備信息,Offline灰色,服務器計算結果或增加心跳檢測,30秒未收到默認為模組Offline，另station_status = "stationdown"為紅色, "alarm"為黃色,都不等則為綠色,顏色優先級紅色>黃色>綠色
+    1.1.4.	圖例2為治具拋料TOP項,顯示1小時內拋料的最高TOP 10, 數據量小於10時不參與排行
+    1.1.5.	圖例3為良率倒數TOP項,顯示1小時內良率最低TOP 10,數據量小於10時不參與排行
+    1.1.6.	計算細節說明
+        i.	圖例1顯示同一個line_no下的線體，圖例1.1即為line_no，line_no值前端代碼更新為固定值，2022/06之前保留M03-3FA-03、M03-3FT-03，2022/06之後根據IE線體修改為4條
+        ii.	圖例1.2圖形數量以module_num數值確定，圖形需篩選line_no, station_type, station_module并且以station_status的狀態來顯示顏色，分子分母數據為count(station_status = Running&Idle) / station_num,示例7/8
+        iii.	圖例2縱座標單位為堆疊圖數值與線條百分比,堆疊圖採用兩種顏色且顯示數值,附加折線圖顯示拋料百分比并顯示百分比,排序使用降序篩選前10，計算公式採用COUNT(sn = "NOSN")的總數除以COUNT(*),即產品無sn總數除以全部有記錄的總數
+        iv.	圖例3縱座標單位為柱狀圖數值與線條百分比, 柱狀圖採用綠色且顯示數值,附件折線圖顯示良率百分比并顯示百分比，排序使用升序篩選前10, 計算公式採用product_status = "Pass"的總數除以sn != "NOSN"的總數,即產品Pass總數除以測試的總數.
+        v.	圖例2與3橫座標顯示為station_type+"-"+station_module+"-"+station_no+"#"
 
  
 
 1.2 分頁
 分頁內容手動刷新,重點展示細節數據
-1.2.1 UPH
- 
-1.	通過左側篩選條件,搜索單工站UPH圖表(圖例1)及可導出列表(圖例2)
-2.	篩選條件需求line_no,station_type,date(YY-MM-DD)，fuxture（”station_module”-“station_no”#），篩選條件默認顯示為空白，空白時日期選擇當天，line_no/station設定默認值，fixure選擇所有（SELECT *）
-3.	篩選框增加多級關聯
-I.	篩選Line，固定值（臨時為M03-4FA-03,M03-4FT-03），通過line_no查詢line_type值
-i.	line_type=pre-snap時，Station篩選欄下拉顯示QT0,QT1,TILT1,QT2,CAT WIFI
-ii.	line_type=post-snap時，Station篩選欄下拉顯示ALS-CAL,FACT21,C-TAP,Grape-Hybrid,SOTA Combo,Gatekeeper
-II.	篩選Station，通過line_no&station_name查詢所有station_module&station_no
-i.	Fixture篩選欄下拉顯示2-8#（後臺字段為” station_module”+”-“+”station_no”+”#”）
-4.	圖例1展示工站當天24H(當日8:00至第二日8:00)的UPH圖表 
-i.	縱座標單位小時，可上下拖動查看每小時的數據
-ii.	橫座標為每小時所有sn != "NOSN"機台總和
-iii.	圖例1.1標題展示當前篩選的line_no[station_type(site)]
-5.	圖例2為細節列表,可查看工站各治具的UPH,查詢time/site/line_type/line_no/station_type/station_module/station_no/sn/product_status/ct
+    1.2.1 UPH
+    
+        1.2.1.1.	通過左側篩選條件,搜索單工站UPH圖表(圖例1)及可導出列表(圖例2)
+        1.2.1.2.	篩選條件需求line_no,station_type,date(YY-MM-DD)，fuxture（”station_module”-“station_no”#），篩選條件默認顯示為空白，空白時日期選擇當天，line_no/station設定默認值，fixure選擇所有（SELECT *）
+        1.2.1.3.	篩選框增加多級關聯
+        1.2.1.I.	篩選Line，固定值（臨時為M03-4FA-03,M03-4FT-03），通過line_no查詢line_type值
+            i.	line_type=pre-snap時，Station篩選欄下拉顯示QT0,QT1,TILT1,QT2,CAT WIFI
+            ii.	line_type=post-snap時，Station篩選欄下拉顯示ALS-CAL,FACT21,C-TAP,Grape-Hybrid,SOTA Combo,Gatekeeper
+            II.	篩選Station，通過line_no&station_name查詢所有station_module&station_no
+            i.	Fixture篩選欄下拉顯示2-8#（後臺字段為” station_module”+”-“+”station_no”+”#”）
+        4.	圖例1展示工站當天24H(當日8:00至第二日8:00)的UPH圖表 
+            i.	縱座標單位小時，可上下拖動查看每小時的數據
+            ii.	橫座標為每小時所有sn != "NOSN"機台總和
+            iii.	圖例1.1標題展示當前篩選的line_no[station_type(site)]
+        5.	圖例2為細節列表,可查看工站各治具的UPH,查詢time/site/line_type/line_no/station_type/station_module/station_no/sn/product_status/ct
 
-1.2.2 Downtime
- 
-1.	通過左側篩選條件,搜索單工站Downtime圖表(圖例1)及可導出列表(圖例2)
-2.	篩選條件需求line_no,station_type,date(YY-MM-DD)，fuxture（”station_module”-“station_no”#），篩選條件默認顯示為空白，空白時日期選擇當天，line_no/station設定默認值，fixure選擇所有（SELECT *）
-3.	篩選框增加多級關聯
-I.	篩選Line，固定值（臨時為M03-4FA-03,M03-4FT-03），通過line_no查詢line_type值
-i.	line_type=pre-snap時，Station篩選欄下拉顯示QT0,QT1,TILT1,QT2,CAT WIFI
-ii.	line_type=post-snap時，Station篩選欄下拉顯示ALS-CAL,FACT21,C-TAP,Grape-Hybrid,SOTA COMBO,GateKeeper
-II.	篩選Station，通過line_no&station_name查詢所有station_module&station_no
-i.	Fixture篩選欄下拉顯示2-8#（後臺字段為” station_module”+”-“+”station_no”+”#”）
-4.	圖例1展示工站downtime圖表，柱狀圖顯示停線時間加總（單位s），附件折線圖顯示百分比（分母暫定全天(86400s)，後期考慮加入班次確定當天工作小時數）
-i.	左上角增加顯示選擇，可選擇Overall（展示當月每天數據）和Detail（展示當天24H每小時數據）
-ii.	橫座標為小時或者天，可左右拖動查看具體每小時或每天的數據
-iii.	縱座標為stationdown狀態的時間加總（單位s）
-iv.	圖例1.1標題展示當前篩選的line_no[station_type(site)]
-5.	圖例2為細節列表,可查看該工站各治具的Downtime, 查詢start_time/end_time/site/line_type/line_no/station_type/station_module/station_no/error
+    1.2.2 Downtime
+    
+    1.2.2.1.	通過左側篩選條件,搜索單工站Downtime圖表(圖例1)及可導出列表(圖例2)
+    1.2.2.2.	篩選條件需求line_no,station_type,date(YY-MM-DD)，fuxture（”station_module”-“station_no”#），篩選條件默認顯示為空白，空白時日期選擇當天，line_no/station設定默認值，fixure選擇所有（SELECT *）
+    1.2.2.3.	篩選框增加多級關聯
+        I.	篩選Line，固定值（臨時為M03-4FA-03,M03-4FT-03），通過line_no查詢line_type值
+            i.	line_type=pre-snap時，Station篩選欄下拉顯示QT0,QT1,TILT1,QT2,CAT WIFI
+            ii.	line_type=post-snap時，Station篩選欄下拉顯示ALS-CAL,FACT21,C-TAP,Grape-Hybrid,SOTA COMBO,GateKeeper
+        II.	篩選Station，通過line_no&station_name查詢所有station_module&station_no
+            i.	Fixture篩選欄下拉顯示2-8#（後臺字段為” station_module”+”-“+”station_no”+”#”）
+    1.2.2.4.	圖例1展示工站downtime圖表，柱狀圖顯示停線時間加總（單位s），附件折線圖顯示百分比（分母暫定全天(86400s)，後期考慮加入班次確定當天工作小時數）
+        i.	左上角增加顯示選擇，可選擇Overall（展示當月每天數據）和Detail（展示當天24H每小時數據）
+        ii.	橫座標為小時或者天，可左右拖動查看具體每小時或每天的數據
+        iii.縱座標為stationdown狀態的時間加總（單位s）
+        iv.	圖例1.1標題展示當前篩選的line_no[station_type(site)]
+    1.2.2.5.	圖例2為細節列表,可查看該工站各治具的Downtime, 查詢start_time/end_time/site/line_type/line_no/station_type/station_module/station_no/error
 
 
 
-1.2.3 error記錄
- 
-1.	通過左側篩選條件,搜索單工站error圖表(圖例1)及可導出列表(圖例2)
-2.	篩選條件需求line_no,station_type,date(YY-MM-DD)，fuxture（”station_module”-“station_no”#），篩選條件默認顯示為空白，空白時日期選擇當天，line_no/station設定默認值，fixure選擇所有（SELECT *）
-3.	篩選框增加多級關聯
-I.	篩選Line，固定值（臨時為M03-4FA-03,M03-4FT-03），通過line_no查詢line_type值
-i.	line_type=pre-snap時，Station篩選欄下拉顯示QT0,QT1,TILT1,QT2,CAT WIFI
-ii.	line_type=post-snap時，Station篩選欄下拉顯示ALS-CAL,FACT21,C-TAP,Grape-Hybrid,SOTA COMBO,GateKeeper
-II.	篩選Station，通過line_no&station_name查詢所有station_module&station_no
-i.	Fixture篩選欄下拉顯示2-8#（後臺字段為” station_module”+”-“+”station_no”）
-4.	圖例1展示工站error報警次數排行 
-i.	左上角增加顯示選擇，可選擇Month（展示當月總數據）和Day（展示當天總數據）
-ii.	縱座標按error內容的次數降序排列，可上下拖動顯示全部數據
-iii.	橫座標為次數
-iv.	圖例1.1標題展示當前篩選的line_no[station_type(site)
-5.	圖例2為細節列表（暫時與Downtime查詢內容同步）,可查看該工站各治具的報警信息, 查詢start_time/end_time/site/line_type/line_no/station_type/station_module/station_no/error
- 
+    1.2.3 error記錄
+    
+        1.2.3.1.	通過左側篩選條件,搜索單工站error圖表(圖例1)及可導出列表(圖例2)
+        1.2.3.2.	篩選條件需求line_no,station_type,date(YY-MM-DD)，fuxture（”station_module”-“station_no”#），篩選條件默認顯示為空白，空白時日期選擇當天，line_no/station設定默認值，fixure選擇所有（SELECT *）
+        1.2.3.3.	篩選框增加多級關聯
+            I.	篩選Line，固定值（臨時為M03-4FA-03,M03-4FT-03），通過line_no查詢line_type值
+                i.	line_type=pre-snap時，Station篩選欄下拉顯示QT0,QT1,TILT1,QT2,CAT WIFI
+                ii.	line_type=post-snap時，Station篩選欄下拉顯示ALS-CAL,FACT21,C-TAP,Grape-Hybrid,SOTA COMBO,GateKeeper
+            II.	篩選Station，通過line_no&station_name查詢所有station_module&station_no
+                i.	Fixture篩選欄下拉顯示2-8#（後臺字段為” station_module”+”-“+”station_no”）
+        1.2.3.4.	圖例1展示工站error報警次數排行 
+            i.	左上角增加顯示選擇，可選擇Month（展示當月總數據）和Day（展示當天總數據）
+            ii.	縱座標按error內容的次數降序排列，可上下拖動顯示全部數據
+            iii.	橫座標為次數
+            iv.	圖例1.1標題展示當前篩選的line_no[station_type(site)
+        1.2.3.5.	圖例2為細節列表（暫時與Downtime查詢內容同步）,可查看該工站各治具的報警信息, 查詢start_time/end_time/site/line_type/line_no/station_type/station_module/station_no/error
+    
 
-1.2.4 拋料
- 
-1.	通過左側篩選條件,搜索單工站拋料圖表(圖例1)及可導出列表(圖例2)
-2.	篩選條件需求line_no,station_type,date(YY-MM-DD)，fuxture（”station_module”-“station_no”#），篩選條件默認顯示為空白，空白時日期選擇當天，line_no/station設定默認值，fixure選擇所有（SELECT *）
-3.	篩選框增加多級關聯
-I.	篩選Line，固定值（臨時為M03-4FA-03,M03-4FT-03），通過line_no查詢line_type值
-i.	line_type=pre-snap時，Station篩選欄下拉顯示QT0,QT1,TILT1,QT2,CAT WIFI
-ii.	line_type=post-snap時，Station篩選欄下拉顯示ALS-CAL,FACT21,C-TAP,Grape-Hybrid,SOTA COMBO,GateKeeper
-II.	篩選Station，通過line_no&station_name查詢所有station_module&station_no
-i.	Fixture篩選欄下拉顯示2-8#（後臺字段為” station_module”+”-“+”station_no”+”#”）
-4.	圖例1展示工站Tossing圖表，數據同首頁，堆疊圖採用兩種顏色且顯示每個station_no的數值，附加折線圖顯示拋料百分比并顯示百分比
-i.	左上角增加顯示選擇，展示當天24H每小時數據或當月每天
-ii.	橫座標為單個工站編號（station_no），可左右拖動查看所有station_module中每個station_no的數據，橫座標module+”station_module”+”-“+“station_no”+”#”
-iii.	縱座標的數值同首頁 
-iv.	圖例1.1標題展示當前篩選的line_no[station_type(site)]
-5.	圖例2為細節列表（暫時與UPH查詢內容同步）,可查看工站各治具的Tossing,查詢time/site/line_type/line_no/station_type/station_module/station_no/sn/product_status/ct
-1.2.5 良率
- 
-1.	通過左側篩選條件,搜索單工站Downtime圖表(圖例1)及可導出列表(圖例2)
-2.	篩選條件需求line_no,station_type,date(YY-MM-DD)，fuxture（”station_module”-“station_no”#），篩選條件默認顯示為空白，空白時日期選擇當天，line_no/station設定默認值，fixure選擇所有（SELECT *）
-3.	篩選框增加多級關聯
-I.	篩選Line，固定值（臨時為M03-4FA-03,M03-4FT-03），通過line_no查詢line_type值
-i.	line_type=pre-snap時，Station篩選欄下拉顯示QT0,QT1,TILT1,QT2,CAT WIFI
-ii.	line_type=post-snap時，Station篩選欄下拉顯示ALS-CAL,FACT21,C-TAP,Grape-Hybrid,SOTA COMBO,GateKeeper
-II.	篩選Station，通過line_no&station_name查詢所有station_module&station_no
-i.	Fixture篩選欄下拉顯示2-8#（後臺字段為” station_module”+”-“+”station_no”+”#”）
-4.	圖例1展示工站Yield圖表，柱狀圖採用綠色且顯示數值，附件折線圖顯示良率百分比并顯示百分比
-i.	左上角增加顯示選擇，展示當天24H每小時數據或當月每天
-ii.	橫座標為單個工站編號（station_no），可左右拖動查看所有station_module中每個station_no的數據，橫座標module+”station_module”+”-“+“station_no”+”#”
-iii.	縱座標數值同首頁
-iv.	圖例1.1標題展示當前篩選的line_no[station_type(site)]
-5.	圖例2為細節列表（暫時與UPH查詢內容同步）,可查看工站各治具的Yield,查詢time/site/line_type/line_no/station_type/station_module/station_no/sn/product_status/ct
+    1.2.4 拋料
+    
+        1.2.4.1.	通過左側篩選條件,搜索單工站拋料圖表(圖例1)及可導出列表(圖例2)
+        1.2.4.2.	篩選條件需求line_no,station_type,date(YY-MM-DD)，fuxture（”station_module”-“station_no”#），篩選條件默認顯示為空白，空白時日期選擇當天，line_no/station設定默認值，fixure選擇所有（SELECT *）
+        1.2.4.3.	篩選框增加多級關聯
+            I.	篩選Line，固定值（臨時為M03-4FA-03,M03-4FT-03），通過line_no查詢line_type值
+                i.	line_type=pre-snap時，Station篩選欄下拉顯示QT0,QT1,TILT1,QT2,CAT WIFI
+                ii.	line_type=post-snap時，Station篩選欄下拉顯示ALS-CAL,FACT21,C-TAP,Grape-Hybrid,SOTA COMBO,GateKeeper
+            II.	篩選Station，通過line_no&station_name查詢所有station_module&station_no
+                i.	Fixture篩選欄下拉顯示2-8#（後臺字段為” station_module”+”-“+”station_no”+”#”）
+        1.2.4.4.	圖例1展示工站Tossing圖表，數據同首頁，堆疊圖採用兩種顏色且顯示每個station_no的數值，附加折線圖顯示拋料百分比并顯示百分比
+            i.	左上角增加顯示選擇，展示當天24H每小時數據或當月每天
+            ii.	橫座標為單個工站編號（station_no），可左右拖動查看所有station_module中每個station_no的數據，橫座標module+”station_module”+”-“+“station_no”+”#”
+            iii.	縱座標的數值同首頁 
+            iv.	圖例1.1標題展示當前篩選的line_no[station_type(site)]
+        1.2.4.5.	圖例2為細節列表（暫時與UPH查詢內容同步）,可查看工站各治具的Tossing,查詢time/site/line_type/line_no/station_type/station_module/station_no/sn/product_status/ct
+    
+    1.2.5 良率
+    
+    1.	通過左側篩選條件,搜索單工站Downtime圖表(圖例1)及可導出列表(圖例2)
+    2.	篩選條件需求line_no,station_type,date(YY-MM-DD)，fuxture（”station_module”-“station_no”#），篩選條件默認顯示為空白，空白時日期選擇當天，line_no/station設定默認值，fixure選擇所有（SELECT *）
+    3.	篩選框增加多級關聯
+    I.	篩選Line，固定值（臨時為M03-4FA-03,M03-4FT-03），通過line_no查詢line_type值
+    i.	line_type=pre-snap時，Station篩選欄下拉顯示QT0,QT1,TILT1,QT2,CAT WIFI
+    ii.	line_type=post-snap時，Station篩選欄下拉顯示ALS-CAL,FACT21,C-TAP,Grape-Hybrid,SOTA COMBO,GateKeeper
+    II.	篩選Station，通過line_no&station_name查詢所有station_module&station_no
+    i.	Fixture篩選欄下拉顯示2-8#（後臺字段為” station_module”+”-“+”station_no”+”#”）
+    4.	圖例1展示工站Yield圖表，柱狀圖採用綠色且顯示數值，附件折線圖顯示良率百分比并顯示百分比
+    i.	左上角增加顯示選擇，展示當天24H每小時數據或當月每天
+    ii.	橫座標為單個工站編號（station_no），可左右拖動查看所有station_module中每個station_no的數據，橫座標module+”station_module”+”-“+“station_no”+”#”
+    iii.	縱座標數值同首頁
+    iv.	圖例1.1標題展示當前篩選的line_no[station_type(site)]
+    5.	圖例2為細節列表（暫時與UPH查詢內容同步）,可查看工站各治具的Yield,查詢time/site/line_type/line_no/station_type/station_module/station_no/sn/product_status/ct
  
 2. 數據上傳
 2.1上傳方式
