@@ -1,7 +1,6 @@
 # **電子看板項目說明**
 
-Dept: Watch NPI SI
-
+![Alt text](https://github.com/Ray-gitlab/Dashboard/blob/main/img/Dept.png) 
 Date: 2011/12/10
 
 
